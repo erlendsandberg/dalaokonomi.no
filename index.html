@@ -1,0 +1,1458 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dala Økonomi AS &#8212; Regnskap, lønn og rådgivning i Brumunddal</title>
+    <meta name="description" content="Dala Økonomi AS &#8212; din lokale regnskapsfører i Brumunddal. Regnskap, lønn/HR, rådgiving og fakturering. Del av Saga KL-nettverket.">
+    <meta name="keywords" content="regnskap Brumunddal, regnskapsfører Innlandet, lønn HR, rådgiving, fakturering, årsoppgjør, Dala Økonomi, Saga KL">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Dala Økonomi AS &#8212; Regnskap, lønn og rådgivning i Brumunddal">
+    <meta property="og:description" content="Din lokale regnskapsfører. Vi tar hele prosessen — fra bokføring og lønn til årsoppgjør og rådgiving.">
+    <meta property="og:url" content="https://dalaokonomi.no">
+    <meta property="og:locale" content="nb_NO">
+    <meta property="og:site_name" content="Dala Økonomi AS">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AccountingService",
+        "name": "Dala Økonomi AS",
+        "description": "Regnskap, lønn/HR, rådgiving og fakturering. Del av Saga KL-nettverket.",
+        "url": "https://dalaokonomi.no",
+        "telephone": "+4762349600",
+        "email": "firmapost@dalaokonomi.no",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Strandsagvegen 11",
+            "postOfficeBoxNumber": "262",
+            "addressLocality": "Brumunddal",
+            "postalCode": "2381",
+            "addressCountry": "NO"
+        },
+        "areaServed": "NO",
+        "vatID": "NO985282013"
+    }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <meta name="theme-color" content="#732e4a">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg: #ffffff;
+            --bg-alt: #f7f4f2;
+            --ink: #2c2a29;
+            --ink-soft: #3f3d3c;
+            --ink-muted: #8a8480;
+            --primary: #732e4a;
+            --primary-dark: #4f1f33;
+            --primary-light: #973d61;
+            --accent: #aea444;
+            --border: #e6e1dd;
+            --content-w: 1280px;
+            --gap: 24px;
+            --serif: 'Dosis', system-ui, sans-serif;
+            --sans: 'Open Sans', system-ui, -apple-system, sans-serif;
+            --mono: 'JetBrains Mono', 'SF Mono', monospace;
+            --ease: cubic-bezier(0.645, 0.045, 0.355, 1);
+            --reveal: cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            font-size: clamp(0.95rem, 1vw, 1.0625rem);
+            line-height: 1.7;
+            color: var(--ink-soft);
+            background: var(--bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        ::selection {
+            background: var(--primary);
+            color: var(--bg);
+        }
+
+        .wrap {
+            max-width: var(--content-w);
+            margin: 0 auto;
+            padding: 0 clamp(1.5rem, 4vw, 4rem);
+        }
+
+        .eyebrow {
+            font-family: var(--mono);
+            font-size: clamp(0.6875rem, 0.8vw, 0.8125rem);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            color: var(--ink-muted);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--serif);
+            color: var(--ink);
+        }
+
+        /* ---- NAV ---- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            transition: transform .4s var(--ease), border-color .3s, background .3s;
+        }
+
+        header.scrolled {
+            background: rgba(255,255,255,.94);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+
+        header.scrolled .logo { color: var(--ink); }
+        header.scrolled .nav-links a { color: var(--ink-muted); }
+        header.scrolled .nav-links a:hover { color: var(--primary); }
+        header.scrolled .mob-toggle span { background: var(--ink); }
+
+        header.border { border-bottom-color: var(--border); }
+        header.hidden { transform: translateY(-100%); }
+
+        header .wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            line-height: 0;
+        }
+
+        .logo img {
+            height: 40px;
+            width: auto;
+            display: block;
+            transition: filter .3s, opacity .3s;
+            /* On dark hero: invert colors so burgundy logo reads as white */
+            filter: brightness(0) invert(1);
+        }
+
+        header.scrolled .logo img {
+            /* On scrolled white header: show original burgundy logo */
+            filter: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            font-size: .8125rem;
+            font-weight: 500;
+            color: rgba(255,255,255,.7);
+            text-decoration: none;
+            letter-spacing: .02em;
+            transition: color .25s;
+        }
+
+        .nav-links a:hover { color: #ffffff; }
+
+        .mob-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 26px;
+            height: 18px;
+            position: relative;
+        }
+
+        .mob-toggle span {
+            display: block;
+            width: 100%;
+            height: 1px;
+            background: #ffffff;
+            position: absolute;
+            left: 0;
+            transition: .3s var(--ease);
+        }
+
+        .mob-toggle span:nth-child(1) { top: 0; }
+        .mob-toggle span:nth-child(2) { top: 8px; }
+        .mob-toggle span:nth-child(3) { top: 16px; }
+
+        .mob-toggle.open span:nth-child(1) { top: 8px; transform: rotate(45deg); }
+        .mob-toggle.open span:nth-child(2) { opacity: 0; }
+        .mob-toggle.open span:nth-child(3) { top: 8px; transform: rotate(-45deg); }
+
+        /* ---- HERO ---- */
+        .hero-wrap {
+            background: linear-gradient(135deg, #4f1f33 0%, #732e4a 45%, #3d1827 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-wrap::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 70% 20%, rgba(255,255,255,.04) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 80% at 20% 80%, rgba(174,164,68,.06) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .hero-wrap::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255,255,255,.1);
+        }
+
+        .hero {
+            min-height: calc(100dvh - 5vw);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding-bottom: clamp(4rem, 8vw, 8rem);
+            padding-top: 10rem;
+        }
+
+        .hero .eyebrow { color: rgba(255,255,255,.5); margin-bottom: 1.5rem; }
+
+        .hero h1 {
+            font-family: var(--serif);
+            font-size: clamp(2.5rem, 7vw, 6rem);
+            font-weight: 300;
+            line-height: 1.08;
+            color: #ffffff;
+            max-width: 950px;
+            letter-spacing: -.01em;
+        }
+
+        .hero-sub {
+            margin-top: 2.5rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap);
+            align-items: end;
+        }
+
+        .hero-sub p {
+            max-width: 420px;
+            color: rgba(255,255,255,.65);
+            font-size: .9375rem;
+            line-height: 1.75;
+        }
+
+        .hero-cta-wrap {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .cta-link {
+            display: inline-flex;
+            align-items: center;
+            gap: .625rem;
+            font-size: .8125rem;
+            font-weight: 500;
+            color: #ffffff;
+            text-decoration: none;
+            letter-spacing: .02em;
+            padding-bottom: 2px;
+            border-bottom: 1px solid rgba(255,255,255,.35);
+            transition: gap .3s var(--ease), border-color .3s;
+        }
+
+        .cta-link:hover { gap: 1rem; border-color: var(--accent); }
+
+        .cta-link::after {
+            content: '\2192';
+            font-size: 1.1em;
+            transition: transform .3s var(--ease);
+        }
+
+        .cta-link:hover::after { transform: translateX(3px); }
+
+        /* ---- DIVIDER ---- */
+        .divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 0;
+        }
+
+        /* ---- NUMBERS ---- */
+        .numbers {
+            padding: clamp(3rem, 5vw, 5rem) 0;
+        }
+
+        .numbers-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--gap);
+        }
+
+        .n-val {
+            font-family: var(--serif);
+            font-size: clamp(1.75rem, 3.5vw, 3rem);
+            font-weight: 300;
+            color: var(--primary);
+            line-height: 1;
+            letter-spacing: -.01em;
+        }
+
+        .n-label {
+            margin-top: .5rem;
+            font-family: var(--mono);
+            font-size: .6875rem;
+            font-weight: 400;
+            letter-spacing: .04em;
+            color: var(--ink-muted);
+            line-height: 1.4;
+        }
+
+        /* ---- SERVICES ---- */
+        .services {
+            padding: clamp(4rem, 8vw, 8rem) 0;
+        }
+
+        .services-head {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap);
+            margin-bottom: clamp(3rem, 5vw, 5rem);
+            align-items: end;
+        }
+
+        .services-head h2 {
+            font-size: clamp(2rem, 4.5vw, 3.75rem);
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: -.015em;
+        }
+
+        .services-head p {
+            max-width: 420px;
+            color: var(--ink-muted);
+            font-size: .9375rem;
+            justify-self: end;
+        }
+
+        .srv-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .srv-item {
+            padding: clamp(1.75rem, 3vw, 2.75rem);
+            border-top: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.5rem;
+            align-items: start;
+            transition: background .35s;
+        }
+
+        .srv-item:hover { background: var(--bg-alt); }
+
+        .srv-item:nth-child(odd) { border-right: 1px solid var(--border); }
+
+        .srv-item:nth-last-child(-n+2) { border-bottom: 1px solid var(--border); }
+
+        .srv-idx {
+            font-family: var(--mono);
+            font-size: .6875rem;
+            font-weight: 500;
+            color: var(--primary);
+            padding-top: .3rem;
+            letter-spacing: .04em;
+        }
+
+        .srv-item h3 {
+            font-family: var(--serif);
+            font-size: clamp(1.125rem, 1.4vw, 1.375rem);
+            font-weight: 600;
+            margin-bottom: .5rem;
+            letter-spacing: -.005em;
+        }
+
+        .srv-item p {
+            font-size: .9rem;
+            color: var(--ink-muted);
+            line-height: 1.7;
+            max-width: 400px;
+        }
+
+        /* ---- ABOUT ---- */
+        .about {
+            padding: clamp(4rem, 8vw, 8rem) 0;
+            background: var(--bg-alt);
+        }
+
+        .about-head {
+            margin-bottom: clamp(2.5rem, 4vw, 4rem);
+        }
+
+        .about-head h2 {
+            font-size: clamp(2rem, 4.5vw, 3.75rem);
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: -.015em;
+            margin-top: .75rem;
+            max-width: 800px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 5fr 4fr;
+            gap: clamp(3rem, 6vw, 6rem);
+        }
+
+        .about-main p {
+            color: var(--ink-soft);
+            margin-bottom: 1.25rem;
+            max-width: 560px;
+        }
+
+        .about-side .eyebrow { margin-bottom: 1.5rem; }
+
+        .about-side ul {
+            list-style: none;
+        }
+
+        .about-side li {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: .9rem;
+            color: var(--ink-soft);
+        }
+
+        .about-side li:first-child {
+            border-top: 1px solid var(--border);
+        }
+
+        .about-side li strong {
+            display: block;
+            font-family: var(--serif);
+            font-weight: 600;
+            color: var(--ink);
+            font-size: 1rem;
+            margin-bottom: .15rem;
+        }
+
+        /* ---- TEAM ---- */
+        .team {
+            padding: clamp(4rem, 8vw, 8rem) 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .team-head {
+            margin-bottom: clamp(2.5rem, 4vw, 4rem);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--gap);
+            align-items: end;
+        }
+
+        .team-head h2 {
+            font-size: clamp(2rem, 4.5vw, 3.75rem);
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: -.015em;
+            margin-top: .75rem;
+        }
+
+        .team-head p {
+            max-width: 420px;
+            color: var(--ink-muted);
+            font-size: .9375rem;
+            justify-self: end;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1px;
+            background: var(--border);
+            border: 1px solid var(--border);
+        }
+
+        .member {
+            background: var(--bg);
+            padding: clamp(1.5rem, 2.5vw, 2rem);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: 1.25rem;
+            align-items: start;
+            transition: background .3s;
+        }
+
+        .member:hover { background: var(--bg-alt); }
+
+        .avatar {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: #ffffff;
+            font-family: var(--serif);
+            font-weight: 500;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: .02em;
+            flex-shrink: 0;
+        }
+
+        .m-info h3 {
+            font-family: var(--serif);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: .2rem;
+            letter-spacing: -.005em;
+        }
+
+        .m-role {
+            font-size: .8rem;
+            color: var(--ink-muted);
+            margin-bottom: .65rem;
+        }
+
+        .m-contact {
+            display: flex;
+            flex-direction: column;
+            gap: .2rem;
+            font-size: .825rem;
+        }
+
+        .m-contact a {
+            color: var(--ink-soft);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .m-contact a:hover { color: var(--primary); }
+
+        @media (max-width: 680px) {
+            .team-grid { grid-template-columns: 1fr; }
+            .team-head { grid-template-columns: 1fr; }
+            .team-head p { justify-self: start; }
+        }
+
+        /* ---- CONTACT ---- */
+        .contact {
+            padding: clamp(4rem, 8vw, 8rem) 0 clamp(3rem, 5vw, 5rem);
+            background: var(--bg-alt);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 5fr 4fr;
+            gap: clamp(3rem, 6vw, 6rem);
+        }
+
+        .contact-left h2 {
+            font-size: clamp(2rem, 4.5vw, 3.75rem);
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: -.015em;
+        }
+
+        .contact-left p {
+            margin-top: 1rem;
+            color: var(--ink-muted);
+            max-width: 420px;
+            font-size: .9375rem;
+        }
+
+        .contact-right { padding-top: .5rem; }
+
+        .c-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border);
+            gap: 1rem;
+        }
+
+        .c-row:first-child { border-top: 1px solid var(--border); }
+
+        .c-label {
+            font-family: var(--mono);
+            font-size: .6875rem;
+            font-weight: 500;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            flex-shrink: 0;
+        }
+
+        .c-val {
+            font-size: .9rem;
+            color: var(--ink-soft);
+            text-align: right;
+        }
+
+        .c-val a {
+            color: var(--ink-soft);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .c-val a:hover { color: var(--primary); }
+
+        /* ---- FORM ---- */
+        .contact-form {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .contact-form .eyebrow { margin-bottom: 1.25rem; }
+
+        .form-row {
+            margin-bottom: 1rem;
+        }
+
+        .form-row label {
+            display: block;
+            font-family: var(--mono);
+            font-size: .6875rem;
+            font-weight: 500;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--ink-muted);
+            margin-bottom: .375rem;
+        }
+
+        .form-row input,
+        .form-row textarea {
+            width: 100%;
+            font-family: var(--sans);
+            font-size: .875rem;
+            color: var(--ink);
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            padding: .65rem .8rem;
+            transition: border-color .2s;
+            outline: none;
+        }
+
+        .form-row input:focus,
+        .form-row textarea:focus {
+            border-color: var(--primary);
+        }
+
+        .form-row textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .form-row-inline {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-submit {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            font-family: var(--sans);
+            font-size: .8125rem;
+            font-weight: 600;
+            color: #ffffff;
+            background: var(--primary);
+            border: none;
+            border-radius: 3px;
+            padding: .75rem 1.5rem;
+            cursor: pointer;
+            letter-spacing: .02em;
+            transition: background .2s;
+            margin-top: .5rem;
+        }
+
+        .form-submit:hover { background: var(--primary-dark); }
+
+        .form-success {
+            display: none;
+            padding: 1rem;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 3px;
+            font-size: .875rem;
+            color: var(--ink-soft);
+        }
+
+        @media (max-width: 680px) {
+            .form-row-inline { grid-template-columns: 1fr; }
+        }
+
+        /* ---- NEWS ---- */
+        .news {
+            padding: clamp(4rem, 8vw, 8rem) 0;
+            border-top: 1px solid var(--border);
+        }
+
+        .news-head {
+            margin-bottom: clamp(2.5rem, 4vw, 4rem);
+        }
+
+        .news-head h2 {
+            font-size: clamp(2rem, 4.5vw, 3.75rem);
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: -.015em;
+            margin-top: .75rem;
+            max-width: 800px;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: clamp(3rem, 5vw, 5rem);
+        }
+
+        .news-col h3 {
+            font-family: var(--mono);
+            font-size: .75rem;
+            font-weight: 500;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: .75rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .news-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
+            background: var(--border);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .news-item {
+            display: block;
+            background: var(--bg);
+            padding: 1.25rem .25rem;
+            text-decoration: none;
+            color: inherit;
+            transition: background .25s, padding-left .25s;
+        }
+
+        .news-item:hover {
+            background: var(--bg-alt);
+            padding-left: 1rem;
+        }
+
+        .news-date {
+            font-family: var(--mono);
+            font-size: .7rem;
+            font-weight: 500;
+            letter-spacing: .04em;
+            color: var(--ink-muted);
+            margin-bottom: .4rem;
+        }
+
+        .news-title {
+            font-family: var(--serif);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.35;
+            margin-bottom: .4rem;
+            letter-spacing: -.005em;
+        }
+
+        .news-excerpt {
+            font-size: .85rem;
+            color: var(--ink-muted);
+            line-height: 1.55;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .news-loading,
+        .news-error {
+            padding: 1.5rem 0;
+            font-size: .85rem;
+            color: var(--ink-muted);
+            font-style: italic;
+        }
+
+        .news-error { color: var(--primary); }
+
+        @media (max-width: 680px) {
+            .news-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+        }
+
+        /* ---- FOOTER ---- */
+        footer {
+            padding: 2.5rem 0;
+            background: var(--primary-dark);
+            color: rgba(255,255,255,.7);
+        }
+
+        footer .wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        footer span {
+            font-size: .8rem;
+        }
+
+        footer a {
+            font-size: .8rem;
+            color: rgba(255,255,255,.7);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        footer a:hover { color: #ffffff; }
+
+        .footer-sagakl {
+            font-family: var(--mono);
+            font-size: .7rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,.5);
+        }
+
+        /* ---- REVEAL ---- */
+        .rv {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.2s var(--reveal), transform 1.2s var(--reveal);
+        }
+
+        .rv.vis {
+            opacity: 1;
+            transform: none;
+        }
+
+        .rv-d1 { transition-delay: .1s; }
+        .rv-d2 { transition-delay: .2s; }
+        .rv-d3 { transition-delay: .3s; }
+
+        /* ---- RESPONSIVE ---- */
+        @media (max-width: 900px) {
+            .srv-list { grid-template-columns: 1fr; }
+            .srv-item:nth-child(odd) { border-right: none; }
+            .srv-item:nth-last-child(2) { border-bottom: none; }
+            .services-head { grid-template-columns: 1fr; }
+            .services-head p { justify-self: start; }
+        }
+
+        @media (max-width: 680px) {
+            .nav-links {
+                display: none;
+                position: fixed;
+                top: 72px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(79,31,51,.97);
+                backdrop-filter: blur(16px);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 3rem 1.5rem;
+                gap: 1.75rem;
+            }
+
+            .nav-links.open { display: flex; }
+            .nav-links a { font-size: 1.25rem; color: #ffffff; }
+
+            .mob-toggle { display: block; }
+
+            .hero { min-height: auto; padding-top: 8rem; padding-bottom: 4rem; }
+
+            .hero h1 { font-size: clamp(2.25rem, 10vw, 3.5rem); }
+
+            .hero-sub {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .hero-cta-wrap { justify-content: flex-start; }
+
+            .numbers-row { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            footer .wrap {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a href="#" class="logo" aria-label="Dala Økonomi AS">
+            <img src="logo.png" alt="Dala Økonomi AS">
+        </a>
+        <button class="mob-toggle" aria-label="Meny" onclick="this.classList.toggle('open');document.querySelector('.nav-links').classList.toggle('open')">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#tjenester">Tjenester</a></li>
+            <li><a href="#om">Om oss</a></li>
+            <li><a href="#ansatte">Ansatte</a></li>
+            <li><a href="#kontakt">Kontakt</a></li>
+        </ul>
+    </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<div class="hero-wrap">
+<section class="hero wrap">
+    <div class="rv">
+        <p class="eyebrow">Regnskap &middot; Lønn &middot; Rådgiving &middot; Fakturering</p>
+    </div>
+    <h1 class="rv rv-d1">Din lokale regnskapsfører i Brumunddal</h1>
+    <div class="hero-sub rv rv-d2">
+        <p>Vi tar hele prosessen innenfor regnskap — fra bokføring, lønn og fakturering til årsoppgjør og ligningspapirer. Hos oss får du en engasjert samarbeidspartner som er opptatt av å hjelpe deg med å lykkes.</p>
+        <div class="hero-cta-wrap">
+            <a href="#kontakt" class="cta-link">Snakk med oss i dag</a>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- NUMBERS -->
+<hr class="divider">
+<section class="numbers wrap rv">
+    <div class="numbers-row">
+        <div>
+            <div class="n-val">10</div>
+            <div class="n-label">Erfarne medarbeidere</div>
+        </div>
+        <div>
+            <div class="n-val">4</div>
+            <div class="n-label">Statsautoriserte regnskapsførere</div>
+        </div>
+        <div>
+            <div class="n-val">Saga KL</div>
+            <div class="n-label">Del av landsdekkende nettverk</div>
+        </div>
+        <div>
+            <div class="n-val">2381</div>
+            <div class="n-label">Brumunddal — Innlandet</div>
+        </div>
+    </div>
+</section>
+<hr class="divider">
+
+<!-- SERVICES -->
+<section class="services wrap" id="tjenester">
+    <div class="services-head rv">
+        <h2>Våre tjenester</h2>
+        <p>Vi tar hele prosessen innenfor regnskap — fra daglig drift til årsoppgjør. Hos oss får du én fast kontaktperson som kjenner din virksomhet.</p>
+    </div>
+    <div class="srv-list rv rv-d1">
+        <div class="srv-item">
+            <div class="srv-idx">01</div>
+            <div>
+                <h3>Regnskap</h3>
+                <p>Bokføring, avstemming, mva, årsoppgjør og ligningspapirer. Vi holder regnskapet ditt i orden slik at du kan konsentrere deg om å drive virksomheten.</p>
+            </div>
+        </div>
+        <div class="srv-item">
+            <div class="srv-idx">02</div>
+            <div>
+                <h3>Lønn og HR</h3>
+                <p>Lønnskjøring, a-melding, feriepenger, sykepenger og reiseregninger. Vi avlaster deg med alt det praktiske rundt ansatte.</p>
+            </div>
+        </div>
+        <div class="srv-item">
+            <div class="srv-idx">03</div>
+            <div>
+                <h3>Rådgiving</h3>
+                <p>Økonomisk rådgiving, budsjettering, likviditetsstyring og strategisk sparring. Vi hjelper deg å ta gode beslutninger basert på tallene.</p>
+            </div>
+        </div>
+        <div class="srv-item">
+            <div class="srv-idx">04</div>
+            <div>
+                <h3>Fakturering</h3>
+                <p>Utfakturering, purringer og inkasso. Vi sørger for at pengene kommer inn, og du kan bruke tiden din på kjernevirksomheten.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="om">
+    <div class="wrap">
+        <div class="about-head rv">
+            <p class="eyebrow">Om oss</p>
+            <h2>Lokal tilstedeværelse, faglig tyngde</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-main rv">
+                <p>Dala Økonomi AS er et regnskapsbyrå med kontor i Brumunddal. Vi er ti medarbeidere — hvorav fire statsautoriserte regnskapsførere — og betjener små og mellomstore virksomheter over hele Innlandet.</p>
+                <p>Vi tror på nærhet og tilgjengelighet. Hos oss får du én fast kontaktperson som kjenner virksomheten din og som du kan ringe direkte når det trengs. Ingen ventekøer, ingen sentralbord.</p>
+                <p>Som del av Saga KL-nettverket har vi tilgang til faglige ressurser, systemer og kompetanse fra over 50 regnskapskontorer i hele Norge. Det gir deg tryggheten til et stort miljø, kombinert med servicen til en lokal partner.</p>
+            </div>
+            <div class="about-side rv rv-d1">
+                <p class="eyebrow">Bransjer vi kjenner</p>
+                <ul>
+                    <li><strong>Bygg og anlegg</strong>Entreprenører, håndverkere og byggebedrifter</li>
+                    <li><strong>Handel og tjenester</strong>Butikker, tjenesteytende virksomheter og kjedekontorer</li>
+                    <li><strong>Landbruk og skogbruk</strong>Gårdsbruk, skogeiere og tilknyttet næring</li>
+                    <li><strong>Eiendom</strong>Utleie, utvikling og eiendomsselskaper</li>
+                    <li><strong>Småbedrifter og ENK</strong>Enkeltpersonforetak og oppstartsselskaper</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TEAM -->
+<section class="team wrap" id="ansatte">
+    <div class="team-head rv">
+        <div>
+            <p class="eyebrow">Ansatte</p>
+            <h2>Menneskene bak tallene</h2>
+        </div>
+        <p>Ti erfarne medarbeidere. Ta kontakt direkte med den som passer best — eller ring hovednummeret, så hjelper vi deg videre.</p>
+    </div>
+    <div class="team-grid rv rv-d1">
+        <div class="member">
+            <div class="avatar">ES</div>
+            <div class="m-info">
+                <h3>Erlend Synnes-Sandberg</h3>
+                <div class="m-role">Daglig leder · Statsautorisert regnskapsfører</div>
+                <div class="m-contact">
+                    <a href="tel:+4745854575">45 85 45 75</a>
+                    <a href="mailto:erlend@dalaokonomi.no">erlend@dalaokonomi.no</a>
+                </div>
+            </div>
+        </div>
+        <div class="member">
+            <div class="avatar">MN</div>
+            <div class="m-info">
+                <h3>Mette Nybakken</h3>
+                <div class="m-role">Statsautorisert regnskapsfører</div>
+                <div class="m-contact">
+                    <a href="tel:+4748119455">481 19 455</a>
+                    <a href="mailto:mn@dalaokonomi.no">mn@dalaokonomi.no</a>
+                </div>
+            </div>
+        </div>
+        <div class="member">
+            <div class="avatar">BS</div>
+            <div class="m-info">
+                <h3>Britt Hanne Strømsøyen</h3>
+                <div class="m-role">Statsautorisert regnskapsfører</div>
+                <div class="m-contact">
+                    <a href="tel:+4797663984">976 63 984</a>
+                    <a href="mailto:bhs@dalaokonomi.no">bhs@dalaokonomi.no</a>
+                </div>
+            </div>
+        </div>
+        <div class="member">
+            <div class="avatar">BF</div>
+            <div class="m-info">
+                <h3>Børge Feiring</h3>
+                <div class="m-role">Statsautorisert regnskapsfører</div>
+                <div class="m-contact">
+                    <a href="tel:+4790679300">906 79 300</a>
+                    <a href="mailto:bf@dalaokonomi.no">bf@dalaokonomi.no</a>
+                </div>
+            </div>
+        </div>
+        <div class="member">
+            <div class="avatar">EM</div>
+            <div class="m-info">
+                <h3>Eva Mangset</h3>
+                <div class="m-role">Regnskapsfører</div>
+                <div class="m-contact">
+                    <a href="tel:+4793498757">934 98 757</a>
+                    <a href="mailto:em@dalaokonomi.no">em@dalaokonomi.no</a>
+                </div>
+            </div>
+        </div>
+        <div class="member">
+            <div class="avatar">IB</div>
+            <div class="m-info">
+                <h3>Ida Berntsen</h3>
+                <div class="m-role">Regnskapsfører</div>
+                <div class="m-contact">
+                    <a href="tel:+4799290514">992 90 514</a>
+                    <a href="mailto:ib@dalaokonomi.no">ib@dalaokonomi.no</a>
+                </div>
+            </div>
+        </div>
+        <div class="member">
+            <div class="avatar">MN</div>
+            <div class="m-info">
+                <h3>Mette G. Nordrumshaugen</h3>
+                <div class="m-role">Regnskapsfører</div>
+                <div class="m-contact">
+                    <a href="tel:+4799614778">996 14 778</a>
+                    <a href="mailto:mgn@dalaokonomi.no">mgn@dalaokonomi.no</a>
+                </div>
+            </div>
+        </div>
+        <div class="member">
+            <div class="avatar">IA</div>
+            <div class="m-info">
+                <h3>Ingeborg Alstad</h3>
+                <div class="m-role">Regnskapsfører</div>
+                <div class="m-contact">
+                    <a href="tel:+4740090930">400 90 930</a>
+                    <a href="mailto:ingeborg.alstad@dalaokonomi.no">ingeborg.alstad@dalaokonomi.no</a>
+                </div>
+            </div>
+        </div>
+        <div class="member">
+            <div class="avatar">HR</div>
+            <div class="m-info">
+                <h3>Hanne P. Roset</h3>
+                <div class="m-role">Regnskapsfører</div>
+                <div class="m-contact">
+                    <a href="tel:+4798825334">98 82 53 34</a>
+                    <a href="mailto:hr@dalaokonomi.no">hr@dalaokonomi.no</a>
+                </div>
+            </div>
+        </div>
+        <div class="member">
+            <div class="avatar">IN</div>
+            <div class="m-info">
+                <h3>Ida Rustad Nordhagen</h3>
+                <div class="m-role">Regnskapsfører</div>
+                <div class="m-contact">
+                    <a href="tel:+4741385175">41 38 51 75</a>
+                    <a href="mailto:irn@dalaokonomi.no">irn@dalaokonomi.no</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- NEWS -->
+<section class="news wrap" id="nyheter">
+    <div class="news-head rv">
+        <p class="eyebrow">Faglig påfyll</p>
+        <h2>Siste nytt</h2>
+    </div>
+    <div class="news-grid rv rv-d1">
+        <div class="news-col">
+            <h3>Fra Saga KL</h3>
+            <div class="news-list" id="news-sagakl">
+                <div class="news-loading">Henter siste nytt…</div>
+            </div>
+        </div>
+        <div class="news-col">
+            <h3>Fra Regnskap Norge</h3>
+            <div class="news-list" id="news-rn">
+                <div class="news-loading">Henter siste nytt…</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="kontakt">
+    <div class="wrap">
+        <div class="contact-grid">
+            <div class="contact-left rv">
+                <p class="eyebrow">Ta kontakt</p>
+                <h2>Lurer du på noe? Snakk med oss i dag.</h2>
+                <p>Ring hovednummeret, send en e-post, eller bruk skjemaet. Vi er tilgjengelige og svarer raskt. Første samtale er uforpliktende.</p>
+            </div>
+            <div class="contact-right rv rv-d1">
+                <div class="c-row">
+                    <div class="c-label">Telefon</div>
+                    <div class="c-val"><a href="tel:+4762349600">62 34 96 00</a></div>
+                </div>
+                <div class="c-row">
+                    <div class="c-label">E-post</div>
+                    <div class="c-val"><a href="mailto:firmapost@dalaokonomi.no">firmapost@dalaokonomi.no</a></div>
+                </div>
+                <div class="c-row">
+                    <div class="c-label">Besøksadresse</div>
+                    <div class="c-val">Strandsagvegen 11<br>2381 Brumunddal</div>
+                </div>
+                <div class="c-row">
+                    <div class="c-label">Postadresse</div>
+                    <div class="c-val">Postboks 262<br>2381 Brumunddal</div>
+                </div>
+                <div class="c-row">
+                    <div class="c-label">Org.nr</div>
+                    <div class="c-val">985 282 013</div>
+                </div>
+
+                <div class="contact-form">
+                    <p class="eyebrow">Send en melding</p>
+                    <form id="contact-form" action="https://formspree.io/f/xgorwyap" method="POST">
+                        <div class="form-row form-row-inline">
+                            <div>
+                                <label for="f-name">Navn</label>
+                                <input type="text" id="f-name" name="name" required autocomplete="name">
+                            </div>
+                            <div>
+                                <label for="f-phone">Telefon</label>
+                                <input type="tel" id="f-phone" name="phone" autocomplete="tel">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <label for="f-email">E-post</label>
+                            <input type="email" id="f-email" name="email" required autocomplete="email">
+                        </div>
+                        <div class="form-row">
+                            <label for="f-msg">Melding</label>
+                            <textarea id="f-msg" name="message" rows="4" required></textarea>
+                        </div>
+                        <button type="submit" class="form-submit">
+                            Send melding
+                            <span>&#8594;</span>
+                        </button>
+                    </form>
+                    <div class="form-success" id="form-ok">
+                        Takk for din henvendelse. Vi tar kontakt innen kort tid.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="wrap">
+        <span>&copy; 2026 Dala Økonomi AS &middot; Org.nr 985 282 013</span>
+        <span class="footer-sagakl">Del av Saga KL</span>
+        <a href="mailto:firmapost@dalaokonomi.no">firmapost@dalaokonomi.no</a>
+    </div>
+</footer>
+
+<script>
+// Hide/show nav on scroll direction
+let lastY = 0;
+let ticking = false;
+const hdr = document.querySelector('header');
+
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        requestAnimationFrame(() => {
+            const y = window.scrollY;
+            hdr.classList.toggle('scrolled', y > 10);
+            hdr.classList.toggle('border', y > 10);
+            if (y > lastY && y > 120) hdr.classList.add('hidden');
+            else hdr.classList.remove('hidden');
+            lastY = y;
+            ticking = false;
+        });
+        ticking = true;
+    }
+});
+
+// Mobile menu
+document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.remove('open');
+        document.querySelector('.mob-toggle').classList.remove('open');
+    });
+});
+
+// Scroll reveal
+const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); }
+    });
+}, { threshold: 0.12 });
+
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+// Contact form
+const form = document.getElementById('contact-form');
+if (form) {
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const btn = form.querySelector('.form-submit');
+        btn.disabled = true;
+        btn.style.opacity = '.5';
+        try {
+            const res = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { 'Accept': 'application/json' }
+            });
+            if (res.ok) {
+                form.style.display = 'none';
+                document.getElementById('form-ok').style.display = 'block';
+            } else {
+                alert('Noe gikk galt. Pr\u00f8v igjen eller send e-post til firmapost@dalaokonomi.no');
+                btn.disabled = false;
+                btn.style.opacity = '1';
+            }
+        } catch {
+            alert('Noe gikk galt. Pr\u00f8v igjen eller send e-post til firmapost@dalaokonomi.no');
+            btn.disabled = false;
+            btn.style.opacity = '1';
+        }
+    });
+}
+
+// ---- NEWS FEEDS ----
+function fmtDate(d) {
+    const dt = (d instanceof Date) ? d : new Date(d);
+    if (isNaN(dt)) return '';
+    const dd = String(dt.getDate()).padStart(2, '0');
+    const mm = String(dt.getMonth() + 1).padStart(2, '0');
+    return `${dd}.${mm}.${dt.getFullYear()}`;
+}
+
+function stripHtml(html) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = html || '';
+    return tmp.textContent.trim().replace(/\s+/g, ' ');
+}
+
+function renderNews(container, items, errorMsg) {
+    if (errorMsg) {
+        container.innerHTML = `<div class="news-error">${errorMsg}</div>`;
+        return;
+    }
+    if (!items || !items.length) {
+        container.innerHTML = '<div class="news-error">Ingen nyheter akkurat nå.</div>';
+        return;
+    }
+    container.innerHTML = items.slice(0, 3).map(it => `
+        <a class="news-item" href="${it.link}" target="_blank" rel="noopener noreferrer">
+            <div class="news-date">${fmtDate(it.date)}</div>
+            <div class="news-title">${it.title}</div>
+            ${it.excerpt ? `<div class="news-excerpt">${it.excerpt}</div>` : ''}
+        </a>
+    `).join('');
+}
+
+// Regnskap Norge — RSS via rss2json
+async function loadRegnskapNorge() {
+    const el = document.getElementById('news-rn');
+    try {
+        const url = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent('https://www.regnskapnorge.no/regnskapnorgerss');
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        if (data.status !== 'ok' || !Array.isArray(data.items)) throw new Error('Invalid feed');
+        const items = data.items.map(it => ({
+            title: it.title,
+            link: it.link,
+            date: it.pubDate,
+            excerpt: stripHtml(it.description).slice(0, 140) + '…'
+        }));
+        renderNews(el, items);
+    } catch (err) {
+        renderNews(el, null, 'Kunne ikke hente nyheter fra Regnskap Norge.');
+    }
+}
+
+// Saga KL — scrape homepage via CORS proxy (no RSS available)
+async function loadSagaKL() {
+    const el = document.getElementById('news-sagakl');
+    try {
+        const url = 'https://corsproxy.io/?url=' + encodeURIComponent('https://www.sagakl.no/');
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const html = await res.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        // Find article cards linking to /aktuelt/...
+        const links = Array.from(doc.querySelectorAll('a[href*="/aktuelt/"]'));
+        const seen = new Set();
+        const items = [];
+        for (const a of links) {
+            const raw = a.getAttribute('href') || '';
+            if (!raw.includes('/aktuelt/') || raw === '/aktuelt/' || raw === '/aktuelt') continue;
+            // Normalise to absolute sagakl URL
+            const link = raw.startsWith('http') ? raw : 'https://www.sagakl.no' + (raw.startsWith('/') ? raw : '/' + raw);
+            if (seen.has(link)) continue;
+            const h = a.querySelector('h1, h2, h3, h4, h5');
+            const title = h ? h.textContent.trim() : a.textContent.trim().split('\n')[0].trim();
+            if (!title || title.length < 5) continue;
+            // Extract date — look for DD.MM.YYYY pattern in the card
+            const cardText = a.textContent;
+            const dateMatch = cardText.match(/(\d{2})\.(\d{2})\.(\d{4})/);
+            const date = dateMatch ? `${dateMatch[3]}-${dateMatch[2]}-${dateMatch[1]}` : null;
+            // Excerpt: any text content inside the card that isn't the title or date
+            const allText = a.textContent.replace(/\s+/g, ' ').trim();
+            let excerpt = allText
+                .replace(title, '')
+                .replace(/\d{2}\.\d{2}\.\d{4}/, '')
+                .replace(/^\s*(Les mer|Les her|Les mer her)\s*$/i, '')
+                .trim();
+            // Remove trailing "Les mer" if present
+            excerpt = excerpt.replace(/\s*(Les mer|Les her|Les mer her)\s*$/i, '').trim();
+            items.push({
+                title,
+                link,
+                date,
+                excerpt: excerpt.slice(0, 140) + (excerpt.length > 140 ? '…' : '')
+            });
+            seen.add(link);
+            if (items.length >= 3) break;
+        }
+        if (!items.length) throw new Error('No items parsed');
+        renderNews(el, items);
+    } catch (err) {
+        renderNews(el, null, 'Kunne ikke hente nyheter fra Saga KL.');
+    }
+}
+
+loadRegnskapNorge();
+loadSagaKL();
+</script>
+
+</body>
+</html>

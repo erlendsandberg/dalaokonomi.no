@@ -1,0 +1,15 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*~
+
+# Claude Code session data
+.claude/
+
+# Temp / build artifacts
+node_modules/
+dist/
+.cache/
+.netlify/

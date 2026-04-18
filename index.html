@@ -1399,14 +1399,31 @@ async function loadRegnskapNorge() {
     }
 }
 
+// Fetch via fallback chain of CORS proxies (public proxies are flaky)
+async function fetchViaProxy(targetUrl) {
+    const proxies = [
+        u => 'https://api.codetabs.com/v1/proxy?quest=' + encodeURIComponent(u),
+        u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u),
+        u => 'https://corsproxy.io/?url=' + encodeURIComponent(u)
+    ];
+    let lastErr;
+    for (const build of proxies) {
+        try {
+            const res = await fetch(build(targetUrl));
+            if (!res.ok) { lastErr = new Error('HTTP ' + res.status); continue; }
+            const text = await res.text();
+            if (text && text.length > 500) return text;
+            lastErr = new Error('Empty response');
+        } catch (e) { lastErr = e; }
+    }
+    throw lastErr || new Error('All proxies failed');
+}
+
 // Saga KL — scrape homepage via CORS proxy (no RSS available)
 async function loadSagaKL() {
     const el = document.getElementById('news-sagakl');
     try {
-        const url = 'https://corsproxy.io/?url=' + encodeURIComponent('https://www.sagakl.no/');
-        const res = await fetch(url);
-        if (!res.ok) throw new Error('HTTP ' + res.status);
-        const html = await res.text();
+        const html = await fetchViaProxy('https://www.sagakl.no/');
         const doc = new DOMParser().parseFromString(html, 'text/html');
         // Find article cards linking to /aktuelt/...
         const links = Array.from(doc.querySelectorAll('a[href*="/aktuelt/"]'));
